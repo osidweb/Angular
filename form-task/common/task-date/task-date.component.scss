@@ -1,0 +1,134 @@
+@import '~scss/variables';
+
+.task-date {
+  position: relative;
+  display: block;
+}
+
+.task-date_label {
+  position: absolute;
+  top: -7px;
+  left: 12px;
+  max-width: calc(100% - 20px);
+  padding: 0 4px;
+  font-size: 12px;
+  line-height: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: $dark-grey;
+  background-color: $white;
+}
+
+.task-date_button {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 14px 0 16px;
+  border: 1px solid $border-color;
+  border-radius: $dropdown-border-radius;
+
+  &.is-active {
+    cursor: pointer;
+  }
+
+  &.is-wide {
+    min-width: 200px;
+  }
+
+  .new-label {
+    margin-left: 5px;
+  }
+}
+
+.task-date_button-arrow {
+  margin-left: 8px;
+  color: $icon-color;
+}
+
+.task-date_button-text {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+
+// дата не установлена
+.task-date_button-text_empty {
+  font-weight: 400;
+  color: $gray-light;
+}
+
+
+
+// дата изменена
+.task-date_button-text_is-canged {
+  display: flex;
+  align-items: center;
+}
+
+.task-date_button-text_is-canged_old-date {
+  color: $dark-grey;
+}
+
+
+
+// просьба передана на проверку
+.task-date_button-text_is-checked {
+  display: flex;
+  align-items: center;
+}
+
+.task-date_button-text_is-checked_date {
+  padding-left: 5px;
+}
+
+
+
+// просьба принята
+.task-date_button-text_is-closed {
+  display: flex;
+  align-items: center;
+}
+
+.task-date_button-text_is-closed_icon {
+  margin-left: 8px;
+  color: $green-dark;
+}
+
+.task-date_button-text_is-closed_text {
+  padding-left: 5px;
+  font-weight: 400;
+  color: $gray-light;
+}
+
+
+
+// просрочка
+.task-date_button-text_is-remind {
+  display: flex;
+  align-items: center;
+}
+
+.task-date_button-text_is-remind_text {
+  padding-left: 5px;
+  color: $red;
+}
+
+
+
+// просрочка с уведомлением руководителя
+.task-date_button-text_is-notify {
+  display: flex;
+  align-items: center;
+}
+
+.task-date_button-text_is-notify_text {
+  padding-left: 5px;
+  color: $red;
+}
+
+.task-date_button-text_is-notify_icon {
+  margin-left: 8px;
+  color: $red;
+}

@@ -1,0 +1,50 @@
+<div class="task-desire-date">
+
+  <!-- заголовок -->
+  <div class="task-desire-date_label">
+    {{desireDateHistory.label}}
+  </div>
+
+  <div
+    class="task-desire-date_button"
+    (click)="openPanel($event)"
+    [ngClass]="{'is-active' : desireDateHistory.isActive && !state.isPreserved}"
+  >
+    <div class="task-desire-date_button-text">
+      <ng-container
+        [ngTemplateOutlet]="this[desireDateHistory.type]"
+        [ngTemplateOutletContext]="{content: desireDateHistory.content}"
+      ></ng-container>
+    </div>
+
+    <mat-icon
+      class="mat-icon-24z task-desire-date_button-arrow"
+      svgIcon="task:arrow_drop_down"
+      *ngIf="desireDateHistory.isActive && !state.isPreserved"
+    ></mat-icon>
+
+    <mat-progress-spinner
+      class="task-desire-date_button-arrow"
+      diameter="24"
+      mode="indeterminate"
+      *ngIf="state.isPreserved"
+    ></mat-progress-spinner>
+  </div>
+</div>
+
+
+<!-- содержимое кнопки -->
+<!-- дата не установлена -->
+<ng-template #isEmpty>
+  <div class="task-desire-date_button-text_empty">
+    <!-- TODO: translate -->
+    {{'Не установлен' | translate}}
+  </div>
+</ng-template>
+
+<!-- дата установлена -->
+<ng-template #isSet let-model="content">
+  <div class="task-desire-date_button-text_is-set">
+    {{model.date}}
+  </div>
+</ng-template>

@@ -1,0 +1,48 @@
+@import '~scss/variables';
+
+.task-desire-date {
+  position: relative;
+  display: block;
+}
+
+.task-desire-date_label {
+  position: absolute;
+  top: -7px;
+  left: 12px;
+  padding: 0 4px;
+  font-size: 12px;
+  line-height: 14px;
+  white-space: nowrap;
+  color: $dark-grey;
+  background-color: $white;
+}
+
+.task-desire-date_button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  min-width: 140px;
+  padding: 0 14px 0 16px;
+  border: 1px solid $border-color;
+  border-radius: $dropdown-border-radius;
+
+  &.is-active {
+    cursor: pointer;
+  }
+}
+
+.task-desire-date_button-arrow {
+  margin-left: 8px;
+  color: $icon-color;
+}
+
+.task-performer_button-text {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.task-desire-date_button-text_empty {
+  font-weight: 400;
+  color: $gray-light;
+}

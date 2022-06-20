@@ -1,0 +1,73 @@
+<!-- ПАНЕЛЬ 'Превью профиля автора' -->
+<div class="author-avatar-panel_content">
+
+  <!-- аватар, ФИО, должность -->
+  <div class="author-avatar-panel_content-author-info">
+    <div class="author-avatar-panel_content-avatar">
+
+      <!-- средный аватар триггер -->
+      <div class="avatar-preview" [matMenuTriggerFor]="menu">
+        <div
+          class="avatar"
+          [style.background-image]="data.images.smallImageUrl">
+        </div>
+      </div>
+
+      <!-- большой аватар -->
+      <mat-menu #menu="matMenu" [overlapTrigger]="true" class="avatar-panel">
+        <div class="big-avatar">
+          <div
+            class="avatar"
+            [style.background-image]="data.images.bigImageUrl">
+          </div>
+        </div>
+      </mat-menu>
+
+      <!-- метка онлайн/оффлайн -->
+      <app-user-status
+        class="author-avatar-panel_user-status"
+        [authorLogin]="data.authorLogin"
+        [showOnlyOnlineAndOffline]="false"
+        [showTitle]="false"
+      ></app-user-status>
+    </div>
+
+    <div class="author-avatar-panel_content-info">
+      <!-- ФИО -->
+      <div class="author-avatar-panel_content-author-name">
+        <div class="author-name">{{username}}</div>
+        
+        <app-involvement
+          class="author-involvement"
+          [authorLogin]="data.authorLogin"
+          [showInvolvementRateHelp]="true"
+        ></app-involvement>
+      </div>
+
+      <!-- должность -->
+      <div class="author-avatar-panel_content-author-workgroup">
+        {{workgroup}}
+      </div>
+    </div>
+  </div>
+
+  <!-- кнопки -->
+  <div class="author-avatar-panel_content-actions" *ngIf="data.showPanelActions">
+    <div class="author-avatar-panel_content-actions_item" (click)="close()">
+      <mat-icon svgIcon="avatar:message"></mat-icon>
+      <!-- TODO: translate -->
+      {{'Написать сообщение' | translate}}
+    </div>
+
+    <a
+      class="author-avatar-panel_content-actions_item"
+      href="/profile/{{data.authorLogin}}"
+      target="_blank"
+      (click)="close()"
+    >
+      <mat-icon svgIcon="avatar:person"></mat-icon>
+      <!-- TODO: translate страый ключ: author.avatar.link_to_profileDisplay -->
+      {{'Открыть профиль' | translate}}
+    </a>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="discus-archive-menu">
+  <div
+    class="discus-archive-menu_item"
+    [ngClass]="{'active' : data.direction === 1}"
+    (click)="loadArchive(1)"
+  >
+    <div>{{'archive_btn.dwnl_begining_msg' | translate}}</div>
+    <mat-icon *ngIf="data.direction === 1" svgIcon="discus-archive:done"></mat-icon>
+  </div>
+  
+  <div
+    class="discus-archive-menu_item"
+    [ngClass]="{'active' : data.direction !== 1}"
+    (click)="loadArchive(-1)"
+  >
+    <div>{{'archive_btn.dwnl_previous_msg' | translate}}</div>
+    <mat-icon *ngIf="data.direction !== 1" svgIcon="discus-archive:done"></mat-icon>
+  </div>
+</div>

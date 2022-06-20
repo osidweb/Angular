@@ -1,0 +1,43 @@
+<!-- Панель Сменить исполнителя -->
+<div class="task-performer-panel">
+  
+  <!-- заголовок -->
+  <div class="task-performer-panel_header">
+    {{'discus.div_performer_a_ChangePerformer' | translate}}
+  </div>
+
+  <!-- основное содержимое -->
+  <div class="task-performer-panel_content">
+    <app-add-participants
+      [users]="data.users"
+      [model]="model.performer"
+      [shareModel]="model.sharePerformer"
+      [_label]="'discus.task_performer_modal.panel_header'| translate"
+      [requiredChoice]="true"
+      [share]="true"
+      [multiple]="false"
+      (changeModelEvent)="selectedPerformer($event)"
+      (changeShareModelEvent)="selectedSharePerformer($event)"
+    ></app-add-participants>
+  </div>
+
+  <!-- кнопки -->
+  <div class="task-performer-panel_actions">
+    <button
+      class="btn"
+      mat-raised-button
+      color="primary"
+      (click)="save()"
+    >
+      {{'discus.task_date_performer_modal.save_button' | translate}}
+    </button>
+
+    <button
+      class="btn"
+      mat-button
+      (click)="close()"
+    >
+      {{'discus.task_date_performer_modal.cancel_button' | translate}}
+    </button>
+  </div>
+</div>

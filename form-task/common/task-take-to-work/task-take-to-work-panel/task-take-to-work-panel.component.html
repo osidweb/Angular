@@ -1,0 +1,45 @@
+<!-- панель сменить дату -->
+<div class="task-take-to-work-panel">
+  <!-- заголовок -->
+  <div class="task-take-to-work-panel_header">
+    <div class="task-take-to-work-panel_header_title">
+      {{'request.deadline' | translate}}
+    </div>
+
+    <div class="task-take-to-work-panel_header_actions">
+      <div class="task-take-to-work-panel_header_info">
+        {{ dateInfo }}
+      </div>
+    </div>
+  </div>
+
+  <!-- основное содержимое -->
+  <div class="task-take-to-work-panel_content">
+    <mat-calendar
+      class="task-take-to-work-panel_content_calendar"
+      [(selected)]="model.date"
+      [minDate]="minDate"
+      (selectedChange)="selectedDate()"
+    ></mat-calendar>
+  </div>
+
+  <!-- кнопки -->
+  <div class="task-take-to-work-panel_actions">
+    <button
+      class="task-take-to-work-panel_actions-button"
+      mat-raised-button
+      color="primary"
+      (click)="save()"
+    >
+      {{'discus.task_date_performer_modal.save_button' | translate}}
+    </button>
+
+    <button
+      class="task-take-to-work-panel_actions-button"
+      mat-button
+      (click)="close()"
+    >
+      {{'discus.task_date_performer_modal.cancel_button' | translate}}
+    </button>
+  </div>
+</div>

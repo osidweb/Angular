@@ -1,0 +1,59 @@
+<!-- панель сменить желаемую дату -->
+<div class="task-desire-date-panel">
+  <!-- заголовок -->
+  <div class="task-desire-date-panel_header">
+    <div class="task-desire-date-panel_header_title">
+      {{'request.deadline' | translate}}
+    </div>
+
+    <div class="task-desire-date-panel_header_actions">
+      <div class="task-desire-date-panel_header_info" *ngIf="dateInfo">
+        {{ dateInfo }}
+      </div>
+
+      <div class="task-desire-date-panel_header_info-empty" *ngIf="!dateInfo">
+        <!-- TODO: translate -->
+        {{ 'Не установлен' | translate }}
+      </div>
+
+      <button
+        class="task-desire-date-panel_header_clear-button"
+        mat-button
+        *ngIf="model.date"
+        (click)="clearDate()"
+      >
+        {{'Popup.btn.clear' | translate}}
+      </button>
+    </div>
+  </div>
+
+  <!-- основное содержимое -->
+  <div class="task-desire-date-panel_content">
+    <mat-calendar
+      class="task-desire-date-panel_content_calendar"
+      [(selected)]="model.date"
+      [minDate]="minDate"
+      (selectedChange)="selectedDate()"
+    ></mat-calendar>
+  </div>
+
+  <!-- кнопки -->
+  <div class="task-desire-date-panel_actions">
+    <button
+      class="task-desire-date-panel_actions-button"
+      mat-raised-button
+      color="primary"
+      (click)="save()"
+    >
+      {{'discus.task_date_performer_modal.save_button' | translate}}
+    </button>
+
+    <button
+      class="task-desire-date-panel_actions-button"
+      mat-button
+      (click)="close()"
+    >
+      {{'discus.task_date_performer_modal.cancel_button' | translate}}
+    </button>
+  </div>
+</div>

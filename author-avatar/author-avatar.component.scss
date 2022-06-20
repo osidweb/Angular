@@ -1,0 +1,22 @@
+// АВАТАР АВТОРА
+.author-avatar_container {
+  display: block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-image: url(../../../../assets/img/avatars/default-avatar.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.author-avatar_photo {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}

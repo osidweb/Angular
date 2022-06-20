@@ -1,0 +1,52 @@
+@import '~scss/variables';
+
+.task-performer {
+  position: relative;
+  display: block;
+}
+
+.task-performer_label {
+  position: absolute;
+  top: -7px;
+  left: 12px;
+  padding: 0 4px;
+  font-size: 12px;
+  line-height: 14px;
+  color: $dark-grey;
+  background-color: $white;
+}
+
+.task-performer_button {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 14px 0 16px;
+  border: 1px solid $border-color;
+  border-radius: $dropdown-border-radius;
+
+  .new-label {
+    margin-left: 5px;
+  }
+}
+
+.task-performer_button-arrow {
+  margin-left: 8px;
+  color: $icon-color;
+}
+
+::ng-deep .task-performer_button-text {
+  font-size: 14px;
+  font-weight: 600;
+
+  span {
+    font-weight: 400;
+    color: $gray-light;
+  }
+}
+
+::ng-deep .task-performer_button-involvement {
+  .involvement-rate,
+  .ex-label {
+    padding-left: 5px;
+  }
+}

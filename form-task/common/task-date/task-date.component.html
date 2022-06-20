@@ -1,0 +1,135 @@
+<div class="task-date">
+
+  <!-- заголовок -->
+  <div class="task-date_label">
+    {{dateHistory.label}}
+  </div>
+
+  <div
+    class="task-date_button"
+    (click)="openPanel($event)"
+    [ngClass]="{
+      'is-active' : dateHistory.isActive && !state.isPreserved,
+      'is-wide': dateHistory.isWideButton
+    }"
+  >
+    <div class="task-date_button-text">
+      <ng-container
+        [ngTemplateOutlet]="this[dateHistory.type]"
+        [ngTemplateOutletContext]="{content: dateHistory.content}"
+      ></ng-container>
+    </div>
+
+    <!-- метка new -->
+    <div class="new-label" *ngIf="dateHistory.isNew">New</div>
+
+    <mat-icon
+      class="mat-icon-24z task-date_button-arrow"
+      svgIcon="task:arrow_drop_down"
+      *ngIf="dateHistory.isActive && !state.isPreserved"
+    ></mat-icon>
+
+    <mat-progress-spinner
+      class="task-date_button-arrow"
+      diameter="24"
+      mode="indeterminate"
+      *ngIf="state.isPreserved"
+    ></mat-progress-spinner>
+  </div>
+</div>
+
+
+<!-- содержимое кнопки -->
+<!-- дата не установлена -->
+<ng-template #isEmpty>
+  <div class="task-date_button-text_empty">
+    {{'Не установлен' | translate}}
+  </div>
+</ng-template>
+
+<!-- дата установлена -->
+<ng-template #isSet let-model="content">
+  <div class="task-date_button-text_is-set">
+    {{model.date}}
+  </div>
+</ng-template>
+
+<!-- дата изменена -->
+<ng-template #isCanged let-model="content">
+  <div class="task-date_button-text_is-canged">
+    <div class="task-date_button-text_is-canged_old-date">
+      {{model.oldDate}}
+    </div>
+
+    <mat-icon
+      class="mat-icon-20z task-date_button-text_is-canged_arrow"
+      svgIcon="task:arrow_right_alt"
+    ></mat-icon>
+
+    <div class="task-date_button-text_is-canged_new-date">
+      {{model.date}}
+    </div>
+  </div>
+</ng-template>
+
+<!-- просрочка -->
+<ng-template #isRemind let-model="content">
+  <div class="task-date_button-text_is-remind">
+    <div class="task-date_button-text_is-remind_date">
+      {{model.date}}
+    </div>
+
+    <div class="task-date_button-text_is-remind_text">
+      {{model.additionalInfo}}
+    </div>
+  </div>
+</ng-template>
+
+<!-- просрочка с уведомлением руководителя -->
+<ng-template #isNotify let-model="content">
+  <div class="task-date_button-text_is-notify">
+    <div class="task-date_button-text_is-notify_date">
+      {{model.date}}
+    </div>
+  
+    <div class="task-date_button-text_is-notify_text">
+      {{model.additionalInfo}}
+    </div>
+
+    <mat-icon
+      class="mat-icon-20z task-date_button-text_is-notify_icon"
+      svgIcon="task:notifications_none"
+    ></mat-icon>
+  </div>
+</ng-template>
+
+<!-- просьба принята -->
+<ng-template #isClosed let-model="content">
+  <div class="task-date_button-text_is-closed">
+    <div class="task-date_button-text_is-closed_date">
+      {{model.date}}
+    </div>
+
+    <div class="task-date_button-text_is-closed_text">
+      {{model.additionalInfo}}
+    </div>
+  
+    <mat-icon
+      class="mat-icon-20z task-date_button-text_is-closed_icon"
+      svgIcon="task:check_circle"
+    ></mat-icon>
+  </div>
+</ng-template>
+
+<!-- просьба передана на проверку -->
+<ng-template #isChecked let-model="content">
+  <div class="task-date_button-text_is-checked">
+    <div class="task-date_button-text_is-checked_checker">
+      {{model.additionalInfo}}
+    </div>
+
+    <div class="task-date_button-text_is-checked_date">
+      {{model.date}}
+    </div>
+  </div>
+</ng-template>

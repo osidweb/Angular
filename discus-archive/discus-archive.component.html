@@ -1,0 +1,53 @@
+<!-- В архиве -->
+<div
+  class="discus-archive"
+  #discusArchiveContainer
+>
+  <div class="archive-divider-text">
+    <mat-progress-bar *ngIf="archiveIsLoaded" mode="indeterminate"></mat-progress-bar>
+
+    <!-- кнопка 'скачать архив' -->
+    <div
+      class="archive-btn"
+      [ngClass]="{ 'show-progress' : archiveIsLoaded, 'with-menu' : archived.count > MAX_NUMBER_OF_COMMENTS }"
+      (click)="loadArchive()"
+      title="{{'discus.span_archived_title' | translate}}"
+    >
+      <!-- контент в обычном состоянии -->
+      <div class="archive-btn_content" *ngIf="!archiveIsLoaded">
+        {{'discus.span_archived' | translate}} {{archived.count}}
+      </div>
+
+      <!-- контент при наведении -->
+      <div class="archive-btn_content-hover pointer" *ngIf="!archiveIsLoaded">
+        <div class="archive-btn_content-hover_text">
+          <div>{{ hoverButtonText }}</div>
+          <mat-icon
+            *ngIf="archived.count <= MAX_NUMBER_OF_COMMENTS"
+            svgIcon="discus-archive:eject"
+            class="default-color"
+          >
+          </mat-icon>
+        </div>
+
+        <div
+          class="archive-menu"
+          *ngIf="archived.count > MAX_NUMBER_OF_COMMENTS && !archiveIsLoaded"
+        >
+          <div
+            class="archive-menu-button"
+            [class.above]="downloadDirectionFromArchive === 1"
+            (click)="openArchiveMenu($event)"
+          >
+            <mat-icon svgIcon="discus-archive:eject"></mat-icon>
+          </div>
+        </div>
+      </div>
+
+      <!-- контент при загрузке -->
+      <div class="archive-btn_content-progress" *ngIf="archiveIsLoaded">
+        {{'discus.span_archived_progress' | translate}}
+      </div>
+    </div>
+  </div>
+</div>

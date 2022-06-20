@@ -1,0 +1,79 @@
+@import '~scss/variables';
+
+.task-desire-date-panel {
+  width: 340px;
+  padding: 24px;
+  background-color: $dropdown-background-color;
+  box-shadow: $dropdown-shadow;
+  border-radius: $dropdown-border-radius;
+
+  @media (max-width: ($screen-smd - 1)) {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  }
+}
+
+.task-desire-date-panel_header {
+
+  @media (max-width: ($screen-smd - 1)) {
+    flex-shrink: 0;
+  }
+}
+
+.task-desire-date-panel_header_title {
+  padding-bottom: 14px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+.task-desire-date-panel_header_info {
+  &:first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.task-desire-date-panel_header_info-empty {
+  color: $gray-light;
+}
+
+.task-desire-date-panel_header_clear-button {
+  margin-left: 8px;
+  color: $blue;
+}
+
+.task-desire-date-panel_header_actions {
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+}
+
+.task-desire-date-panel_content {
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: ($screen-smd - 1)) {
+    flex-grow: 1;
+  }
+}
+
+.task-desire-date-panel_content_calendar {
+  width: 214px;
+}
+
+.task-desire-date-panel_actions {
+  padding-top: 24px;
+
+  @media (max-width: ($screen-smd - 1)) {
+    flex-shrink: 0;
+  }
+}
+
+.task-desire-date-panel_actions-button {
+  &:last-child {
+    margin-left: 10px;
+  }
+}

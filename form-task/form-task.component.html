@@ -1,0 +1,131 @@
+<!-- ОСНОВНОЙ ДОКУМЕНТ -->
+<div class="discuss-document_wrapper">
+
+  <!-- основное содержимое просьбы -->
+  <div class="discuss-document_content">
+    <app-tag-list
+      class="discuss-document_tags-list"
+      [tags]="document.Tags"
+    ></app-tag-list>
+
+    <div
+      appTextSelectionMenu
+      [textSelectionDocument]="document"
+      appShowProfileOnMentionClick
+      class="discuss-document_body"
+      [innerHtml]="document.body | createLink | safe: 'html'"
+    >
+    </div>
+
+    <!-- Список приаттаченных файлов -->
+    <app-upload-list
+      class="discuss-document_upload-list"
+      [model]="document.attachments"
+      [docUnid]="document.unid"
+      [viewOnly]="true"
+    ></app-upload-list>
+  </div>
+
+
+  <!-- footer просьбы: исполнитель, проверяющий, кнопки, история -->
+  <div class="discuss-document_footer task_footer">
+
+    <!-- исполнитель, проверяющий, даты -->
+    <div class="task_footer_date-performer-wrapper">
+
+      <!-- выбор исполнителя -->
+      <app-task-performer
+        *ngIf="showTaskPerformerComponent"
+        [document]="document"
+        [history]="document.taskHistories"
+      ></app-task-performer>
+
+      <!-- выбор желаемой даты (дата автора просьбы) -->
+      <app-task-desire-date
+        *ngIf="showTaskDesireDateComponent"
+        [document]="document"
+        [desireDate]="document.taskDateEnd"
+      ></app-task-desire-date>
+
+      <!-- выбор даты выполнения (дата исполнителя просьбы) -->
+      <app-task-date
+        *ngIf="showTaskDateComponent"
+        [document]="document"
+        [history]="document.taskHistories"
+      ></app-task-date>
+
+      <!-- просьба отменена -->
+      <app-task-cancel
+        *ngIf="showTaskCancelComponent"
+        [document]="document"
+        [history]="document.taskHistories"
+      ></app-task-cancel>
+    </div>
+
+    <!-- история -->
+    <app-task-history
+      class="task_footer_history-wrapper"
+      [history]="history"
+      [tasking]="document?.tasking"
+    ></app-task-history>
+
+    <!-- кнопки -->
+    <div class="task_footer_buttons-wrapper">
+
+      <!-- принять в работу -->
+      <app-task-take-to-work
+        *ngIf="showTakeToWorkButton"
+        [document]="document"
+      ></app-task-take-to-work>
+
+      <!-- уведомить об исполнении -->
+      <app-task-button
+        *ngIf="showCompleteButton"
+        [buttonTitle]="'discus.btn_li_tasking_complete'"
+        (taskButtonClickEvent)="completeTask()"
+      ></app-task-button>
+
+      <!-- запросить накат -->
+      <app-task-button
+        *ngIf="showToApplyButton"
+        [buttonTitle]="'discus.btn_li_tasking_toApply'"
+        (taskButtonClickEvent)="applyTask()"
+      ></app-task-button>
+
+      <!-- выполнить накат -->
+      <app-task-button
+        *ngIf="showToApplyCompleteButton"
+        [buttonTitle]="'discus.btn_li_tasking_toApplyComplete'"
+        (taskButtonClickEvent)="applyCompleteTask()"
+      ></app-task-button>
+
+      <!-- принять исполнение -->
+      <app-task-button
+        *ngIf="showCloseButton"
+        [buttonTitle]="'discus.btn_li_tasking_close'"
+        (taskButtonClickEvent)="closeTask()"
+      ></app-task-button>
+
+      <!-- вернуть на доработку -->
+      <app-task-button
+        *ngIf="showRejectButton"
+        [buttonTitle]="'discus.btn_li_tasking_reject'"
+        (taskButtonClickEvent)="rejectTask()"
+      ></app-task-button>
+
+      <!-- отдать на проверку -->
+      <app-task-button
+        *ngIf="showCheckButton"
+        [buttonTitle]="'discus.btn_li_tasking_check'"
+        (taskButtonClickEvent)="checkTask()"
+      ></app-task-button>
+
+      <!-- отменить -->
+      <app-task-button
+        *ngIf="showCancelButton"
+        [buttonTitle]="'discus.btn_li_tasking_cancel'"
+        (taskButtonClickEvent)="cancelTask()"
+      ></app-task-button>
+    </div>
+  </div>
+</div>

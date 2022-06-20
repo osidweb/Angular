@@ -1,0 +1,39 @@
+<div class="task-performer">
+
+  <!-- заголовок -->
+  <div class="task-performer_label">
+    {{performerHistory.label}}
+  </div>
+
+  <div
+    class="task-performer_button"
+    (click)="openPanel($event)"
+  >
+    <div
+      class="task-performer_button-text"
+      [innerHtml]="performerHistory.text | safe: 'html'"
+    ></div>
+
+    <!-- вовлечение -->
+    <app-involvement
+      class="task-performer_button-involvement"
+      [authorLogin]="document.taskPerformerLat[0]"
+    ></app-involvement>
+
+    <!-- метка new -->
+    <div class="new-label" *ngIf="performerHistory.isNew">New</div>
+
+    <mat-icon
+      class="mat-icon-24z task-performer_button-arrow"
+      svgIcon="task:arrow_drop_down"
+      *ngIf="performerHistory.isActive && !state.isPreserved"
+    ></mat-icon>
+
+    <mat-progress-spinner
+      class="task-performer_button-arrow"
+      diameter="24"
+      mode="indeterminate"
+      *ngIf="state.isPreserved"
+    ></mat-progress-spinner>
+  </div>
+</div>

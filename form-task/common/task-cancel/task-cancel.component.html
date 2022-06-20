@@ -1,0 +1,13 @@
+<div class="task-cancel">
+
+  <!-- текст об отмене просьбы -->
+  <div class="task-cancel_text">
+    {{taskCancelHistory.text}}
+  </div>
+
+  <!-- метка new -->
+  <div
+    class="new-label task-cancel_new-label"
+    *ngIf="taskCancelHistory.isNew"
+  >New</div>
+</div>

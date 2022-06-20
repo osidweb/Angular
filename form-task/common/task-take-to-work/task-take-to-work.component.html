@@ -1,0 +1,17 @@
+<!-- кнопка 'принять в работу' -->
+<div
+  class="task-take-to-work-button"
+  (click)="takeToWork($event)"
+>
+  <div class="task-take-to-work-button_text">
+    {{ 'discus.task_date.button' | translate }}
+  </div>
+
+  <div class="task-take-to-work-button_spinner">
+    <mat-progress-spinner
+      diameter="24"
+      mode="indeterminate"
+      *ngIf="state.isPreserved"
+    ></mat-progress-spinner>
+  </div>
+</div>

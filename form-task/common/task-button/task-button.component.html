@@ -1,0 +1,17 @@
+<!-- кнопка просьбы -->
+<div
+  class="task-button"
+  (click)="taskButtonClick()"
+>
+  <div class="task-button_text">
+    {{ buttonTitle | translate }}
+  </div>
+
+  <div class="task-button_spinner">
+    <mat-progress-spinner
+      diameter="24"
+      mode="indeterminate"
+      *ngIf="state.isPreserved"
+    ></mat-progress-spinner>
+  </div>
+</div>
